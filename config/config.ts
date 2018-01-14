@@ -5,7 +5,9 @@ const jsonReports = process.cwd() + "/reports/json";
 
 export let config: Config = {
     seleniumAddress: "http://localhost:4444/wd/hub",
-    baseUrl: "https://www.google.com/ncr",
+    baseUrl: "http://www.ryanair.com/ie/en/",
+    getPageTimeout: 20000,
+    allScriptsTimeout: 11000,
     capabilities: {
       browserName: process.env.TEST_BROWSER_NAME || "chrome"
     },
@@ -14,7 +16,6 @@ export let config: Config = {
     specs: ["../../features/*.feature"],
 
     onPrepare: function() {
-        browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
         Reporter.createDirectory(jsonReports);
     },
@@ -22,7 +23,7 @@ export let config: Config = {
     cucumberOpts: {
         compiler: "ts:ts-node/register",
         format: "json:./reports/json/cucumber_report.json",
-        require: ["../../stepdefinitions/*.ts", "../../support/*.ts"],
+        require: ["../../stepdefinitions/*.ts", "../../utilities/*.ts"],
         strict: true,
         tags: "@BookingScenario"
     },
