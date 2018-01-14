@@ -5,7 +5,7 @@ const jsonReports = process.cwd() + "/reports/json";
 
 export let config: Config = {
     seleniumAddress: "http://localhost:4444/wd/hub",
-    baseUrl: "http://www.ryanair.com/ie/en/",
+    baseUrl: "https://www.ryanair.com/ie/en/",
     getPageTimeout: 20000,
     allScriptsTimeout: 11000,
     capabilities: {
@@ -16,6 +16,7 @@ export let config: Config = {
     specs: ["../../features/*.feature"],
 
     onPrepare: function() {
+        browser.ignoreSynchronization = true;
         browser.manage().window().maximize();
         Reporter.createDirectory(jsonReports);
     },

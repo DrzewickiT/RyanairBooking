@@ -8,11 +8,11 @@ const expect = chai.expect;
 const homepage: HomePage = new HomePage();
 
 Given(/^I open homepage$/, async () => {
-    await expect(browser.getCurrentUrl()).to.equal(homepage.homepageAddress);
+    expect(browser.getCurrentUrl()).to.eventually.equal(homepage.homepageAddress);
 });
 
 Then(/^I see page title$/, () => {
-    expect(browser.getTitle()).to.equal("Official Ryanair website | Cheap flights from Ireland | Ryanair");
+    expect(browser.getTitle()).to.eventually.equal("Official Ryanair website | Cheap flights from Ireland | Ryanair");
 });
 
 
