@@ -1,7 +1,7 @@
-const { BeforeAll, After, Status } = require("cucumber");
-import * as fs from "fs";
-import { browser } from "protractor";
-import { config } from "../config/config";
+const { BeforeAll, After, Status } = require('cucumber');
+import * as fs from 'fs';
+import { browser } from 'protractor';
+import { config } from '../config/config';
 
 BeforeAll({timeout: 60 * 1000}, async () => {
     await browser.get(config.baseUrl);
